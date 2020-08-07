@@ -1,5 +1,5 @@
 /*
- * rc-datetime-picker v1.7.6
+ * rc-datetime-picker v1.7.7
  * https://github.com/AllenWooooo/rc-datetime-picker
  *
  * (c) 2020 Allen Wu
