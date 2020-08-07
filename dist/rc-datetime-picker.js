@@ -1,5 +1,5 @@
 /*
- * rc-datetime-picker v1.7.7
+ * rc-datetime-picker v1.7.8
  * https://github.com/AllenWooooo/rc-datetime-picker
  *
  * (c) 2020 Allen Wu
@@ -256,8 +256,8 @@ var Day = function (_Component) {
   }
 
   createClass(Day, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(props) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(props) {
       this.setState({
         moment: props.moment
       });
@@ -446,8 +446,8 @@ var Month = function (_Component) {
   }
 
   createClass(Month, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(props) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(props) {
       this.setState({
         moment: props.moment
       });
@@ -616,8 +616,8 @@ var Year = function (_Component) {
   }
 
   createClass(Year, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(props) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(props) {
       this.setState({
         moment: props.moment
       });
@@ -699,8 +699,8 @@ var Calendar = function (_Component) {
   }
 
   createClass(Calendar, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(props) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(props) {
       this.setState({
         moment: this.getCurrentMoment(props)
       });
@@ -723,13 +723,17 @@ var Calendar = function (_Component) {
           minDate = _props.minDate,
           dateLimit = _props.dateLimit,
           range = _props.range,
-          rangeAt = _props.rangeAt;
+          rangeAt = _props.rangeAt,
+          leftIcon = _props.leftIcon,
+          rightIcon = _props.rightIcon;
 
       var props = {
         moment: this.state.moment,
         selected: this.props.moment,
         onSelect: this.handleSelect,
         changePanel: this.changePanel,
+        leftIcon: leftIcon,
+        rightIcon: rightIcon,
         weeks: weeks,
         months: months,
         dayFormat: dayFormat,
@@ -848,8 +852,8 @@ var Time = function (_Component) {
   }
 
   createClass(Time, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(props) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(props) {
       this.setState({
         moment: this.getCurrentMoment(props)
       });
@@ -1153,8 +1157,8 @@ var Range = function (_Component) {
   }
 
   createClass(Range, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(props) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(props) {
       this.setState({
         moment: props.moment
       });
@@ -1638,8 +1642,8 @@ var Portal = function (_Component) {
       this.renderPortal(this.props);
     }
   }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(props) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(props) {
       this.renderPortal(props);
     }
   }, {

@@ -8,7 +8,7 @@ class Portal extends Component {
     this.renderPortal(this.props);
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.renderPortal(props);
   }
 

@@ -14,7 +14,7 @@ class Calendar extends Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.setState({
       moment: this.getCurrentMoment(props)
     });
@@ -83,12 +83,14 @@ class Calendar extends Component {
   }
 
   render() {
-    const {weeks, months, dayFormat, style, maxDate, minDate, dateLimit, range, rangeAt} = this.props;
+    const {weeks, months, dayFormat, style, maxDate, minDate, dateLimit, range, rangeAt, leftIcon, rightIcon} = this.props;
     const props = {
       moment: this.state.moment,
       selected: this.props.moment,
       onSelect: this.handleSelect,
       changePanel: this.changePanel,
+      leftIcon,
+      rightIcon,
       weeks,
       months,
       dayFormat,

@@ -15,7 +15,7 @@ class Range extends Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.setState({
       moment: props.moment
     });
