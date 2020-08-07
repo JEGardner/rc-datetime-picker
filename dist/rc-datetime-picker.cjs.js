@@ -1,5 +1,5 @@
 /*
- * rc-datetime-picker v1.7.1
+ * rc-datetime-picker v1.7.2
  * https://github.com/AllenWooooo/rc-datetime-picker
  *
  * (c) 2020 Allen Wu
@@ -933,18 +933,18 @@ var _initialiseProps$1 = function _initialiseProps() {
     var _moment = _this2.state.moment.clone();
     var selected = _this2.props.moment;
 
-    _moment[type](value);
+    var newTime = _moment[type](value);
 
     if (range) {
       var copyed = selected ? Object.assign(selected, {}) : {};
 
-      copyed[rangeAt] = _moment;
+      copyed[rangeAt] = newTime;
     } else {
-      selected = _moment;
+      selected = newTime;
     }
 
     _this2.setState({
-      moment: _moment
+      moment: newTime
     });
     onChange && onChange(selected);
   };

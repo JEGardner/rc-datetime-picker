@@ -37,18 +37,18 @@ class Time extends Component {
     const _moment = this.state.moment.clone();
     let selected = this.props.moment;
 
-    _moment[type](value);
+    const newTime = _moment[type](value);
 
     if (range) {
       const copyed = selected ? Object.assign(selected, {}) : {};
 
-      copyed[rangeAt] = _moment;
+      copyed[rangeAt] = newTime;
     } else {
-      selected = _moment;
+      selected = newTime;
     }
 
     this.setState({
-      moment: _moment
+      moment: newTime
     });
     onChange && onChange(selected);
   }
