@@ -25,8 +25,6 @@ class Time extends Component {
       if (range) {
         result = result[rangeAt] || dayjs();
       }
-    } else {
-      result = dayjs();
     }
 
     return result;

@@ -1,5 +1,5 @@
 /*
- * rc-datetime-picker v1.7.4
+ * rc-datetime-picker v1.7.5
  * https://github.com/AllenWooooo/rc-datetime-picker
  *
  * (c) 2020 Allen Wu
@@ -915,8 +915,6 @@ var _initialiseProps$1 = function _initialiseProps() {
       if (range) {
         result = result[rangeAt] || dayjs();
       }
-    } else {
-      result = dayjs();
     }
 
     return result;
