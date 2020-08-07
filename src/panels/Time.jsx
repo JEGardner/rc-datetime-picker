@@ -65,9 +65,9 @@ class Time extends Component {
           </div>
           <div className="sliders">
             <span className="slider-text">Hours:</span>
-            <ReactSlider min={0} max={23} value={_moment.hour()} onChange={this.handleChange.bind(this, 'hour')} withBars />
+            <ReactSlider min={0} max={23} value={_moment.hour()} defaultValue={_moment.hour()}  onChange={this.handleChange.bind(this, 'hour')} withBars />
             <span className="slider-text">Minutes:</span>
-            <ReactSlider min={0} max={59} value={_moment.minute()} onChange={this.handleChange.bind(this, 'minute')} withBars />
+            <ReactSlider min={0} max={59} value={_moment.minute()} defaultValue={_moment.minute()} onChange={this.handleChange.bind(this, 'minute')} withBars />
           </div>
         </div>
       </div>

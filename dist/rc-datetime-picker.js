@@ -1,5 +1,5 @@
 /*
- * rc-datetime-picker v1.7.5
+ * rc-datetime-picker v1.7.6
  * https://github.com/AllenWooooo/rc-datetime-picker
  *
  * (c) 2020 Allen Wu
@@ -273,7 +273,9 @@ var Day = function (_Component) {
           _props$dayFormat = _props.dayFormat,
           dayFormat = _props$dayFormat === undefined ? DAY_FORMAT : _props$dayFormat,
           style = _props.style,
-          changePanel = _props.changePanel;
+          changePanel = _props.changePanel,
+          leftIcon = _props.leftIcon,
+          rightIcon = _props.rightIcon;
 
       var _moment = this.state.moment;
       var firstDay = _moment.clone().date(1).day();
@@ -290,7 +292,7 @@ var Day = function (_Component) {
           React__default.createElement(
             'button',
             { type: 'button', className: 'prev-month', onClick: this.changeMonth.bind(this, 'prev') },
-            React__default.createElement('i', { className: 'fa fa-angle-left' })
+            leftIcon || React__default.createElement('i', { className: 'fa fa-angle-left' })
           ),
           React__default.createElement(
             'span',
@@ -300,7 +302,7 @@ var Day = function (_Component) {
           React__default.createElement(
             'button',
             { type: 'button', className: 'next-month', onClick: this.changeMonth.bind(this, 'next') },
-            React__default.createElement('i', { className: 'fa fa-angle-right' })
+            rightIcon || React__default.createElement('i', { className: 'fa fa-angle-right' })
           )
         ),
         React__default.createElement(
@@ -459,7 +461,9 @@ var Month = function (_Component) {
       var months = MONTHS;
       var _props = this.props,
           changePanel = _props.changePanel,
-          style = _props.style;
+          style = _props.style,
+          leftIcon = _props.leftIcon,
+          rightIcon = _props.rightIcon;
 
 
       return React__default.createElement(
@@ -471,7 +475,7 @@ var Month = function (_Component) {
           React__default.createElement(
             'button',
             { type: 'button', className: 'prev-month', onClick: this.changeYear.bind(this, 'prev') },
-            React__default.createElement('i', { className: 'fa fa-angle-left' })
+            leftIcon || React__default.createElement('i', { className: 'fa fa-angle-left' })
           ),
           React__default.createElement(
             'span',
@@ -481,7 +485,7 @@ var Month = function (_Component) {
           React__default.createElement(
             'button',
             { type: 'button', className: 'next-month', onClick: this.changeYear.bind(this, 'next') },
-            React__default.createElement('i', { className: 'fa fa-angle-right' })
+            rightIcon || React__default.createElement('i', { className: 'fa fa-angle-right' })
           )
         ),
         React__default.createElement(
@@ -624,7 +628,10 @@ var Year = function (_Component) {
       var _this2 = this;
 
       var _moment = this.state.moment;
-      var style = this.props.style;
+      var _props = this.props,
+          style = _props.style,
+          leftIcon = _props.leftIcon,
+          rightIcon = _props.rightIcon;
 
       var firstYear = Math.floor(_moment.year() / 10) * 10;
       var years = range(firstYear - 1, firstYear + 11);
@@ -638,7 +645,7 @@ var Year = function (_Component) {
           React__default.createElement(
             'button',
             { type: 'button', className: 'prev-month', onClick: this.changePeriod.bind(this, 'prev') },
-            React__default.createElement('i', { className: 'fa fa-angle-left' })
+            leftIcon || React__default.createElement('i', { className: 'fa fa-angle-left' })
           ),
           React__default.createElement(
             'span',
@@ -650,7 +657,7 @@ var Year = function (_Component) {
           React__default.createElement(
             'button',
             { type: 'button', className: 'next-month', onClick: this.changePeriod.bind(this, 'next') },
-            React__default.createElement('i', { className: 'fa fa-angle-right' })
+            rightIcon || React__default.createElement('i', { className: 'fa fa-angle-right' })
           )
         ),
         React__default.createElement(
@@ -887,13 +894,13 @@ var Time = function (_Component) {
               { className: 'slider-text' },
               'Hours:'
             ),
-            React__default.createElement(ReactSlider, { min: 0, max: 23, value: _moment.hour(), onChange: this.handleChange.bind(this, 'hour'), withBars: true }),
+            React__default.createElement(ReactSlider, { min: 0, max: 23, value: _moment.hour(), defaultValue: _moment.hour(), onChange: this.handleChange.bind(this, 'hour'), withBars: true }),
             React__default.createElement(
               'span',
               { className: 'slider-text' },
               'Minutes:'
             ),
-            React__default.createElement(ReactSlider, { min: 0, max: 59, value: _moment.minute(), onChange: this.handleChange.bind(this, 'minute'), withBars: true })
+            React__default.createElement(ReactSlider, { min: 0, max: 59, value: _moment.minute(), defaultValue: _moment.minute(), onChange: this.handleChange.bind(this, 'minute'), withBars: true })
           )
         )
       );

@@ -135,7 +135,7 @@ class Day extends Component {
   }
 
   render() {
-    const {weeks = WEEKS, dayFormat = DAY_FORMAT, style, changePanel} = this.props;
+    const {weeks = WEEKS, dayFormat = DAY_FORMAT, style, changePanel, leftIcon, rightIcon} = this.props;
     const _moment = this.state.moment;
     const firstDay = _moment.clone().date(1).day();
     const endOfThisMonth = _moment.clone().endOf('month').date();
@@ -150,11 +150,11 @@ class Day extends Component {
       <div className="calendar-days" style={style}>
         <div className="calendar-nav">
           <button type="button" className="prev-month" onClick={this.changeMonth.bind(this, 'prev')}>
-            <i className="fa fa-angle-left"/>
+            {leftIcon || <i className="fa fa-angle-left"/>}
           </button>
           <span className="current-date" onClick={changePanel.bind(this, 'month', _moment)}>{_moment.format(dayFormat)}</span>
           <button type="button" className="next-month" onClick={this.changeMonth.bind(this, 'next')}>
-            <i className="fa fa-angle-right"/>
+            {rightIcon || <i className="fa fa-angle-right"/>}
           </button>
         </div>
         <table>

@@ -115,7 +115,7 @@ class Year extends Component {
 
   render() {
     const _moment = this.state.moment;
-    const {style} = this.props;
+    const {style, leftIcon, rightIcon} = this.props;
     const firstYear = Math.floor(_moment.year() / 10) * 10;
     const years = range(firstYear - 1, firstYear + 11);
 
@@ -123,11 +123,11 @@ class Year extends Component {
       <div className="calendar-years" style={style}>
         <div className="calendar-nav">
           <button type="button" className="prev-month" onClick={this.changePeriod.bind(this, 'prev')}>
-            <i className="fa fa-angle-left"/>
+            {leftIcon || <i className="fa fa-angle-left"/>}
           </button>
           <span className="current-date disabled">{firstYear} - {firstYear + 9}</span>
           <button type="button" className="next-month" onClick={this.changePeriod.bind(this, 'next')}>
-            <i className="fa fa-angle-right"/>
+            {rightIcon || <i className="fa fa-angle-right"/>}
           </button>
         </div>
         <table>

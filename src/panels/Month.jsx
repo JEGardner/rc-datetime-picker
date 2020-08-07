@@ -119,17 +119,17 @@ class Month extends Component {
   render() {
     const _moment = this.state.moment;
     const months = MONTHS;
-    const {changePanel, style} = this.props;
+    const {changePanel, style, leftIcon, rightIcon} = this.props;
 
     return (
       <div className="calendar-months" style={style}>
         <div className="calendar-nav">
           <button type="button" className="prev-month" onClick={this.changeYear.bind(this, 'prev')}>
-            <i className="fa fa-angle-left"/>
+            {leftIcon || <i className="fa fa-angle-left"/>}
           </button>
           <span className="current-date" onClick={changePanel.bind(this, 'year', _moment)}>{_moment.format('YYYY')}</span>
           <button type="button" className="next-month" onClick={this.changeYear.bind(this, 'next')}>
-            <i className="fa fa-angle-right"/>
+            {rightIcon || <i className="fa fa-angle-right"/>}
           </button>
         </div>
         <table>
