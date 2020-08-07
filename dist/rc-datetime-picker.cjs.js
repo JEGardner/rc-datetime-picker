@@ -1,5 +1,5 @@
 /*
- * rc-datetime-picker v1.7.0
+ * rc-datetime-picker v1.7.1
  * https://github.com/AllenWooooo/rc-datetime-picker
  *
  * (c) 2020 Allen Wu
@@ -889,13 +889,13 @@ var Time = function (_Component) {
               { className: 'slider-text' },
               'Hours:'
             ),
-            React__default.createElement(ReactSlider, { min: 0, max: 23, value: _moment.hour(), onChange: this.handleChange.bind(this, 'hours'), withBars: true }),
+            React__default.createElement(ReactSlider, { min: 0, max: 23, value: _moment.hour(), onChange: this.handleChange.bind(this, 'hour'), withBars: true }),
             React__default.createElement(
               'span',
               { className: 'slider-text' },
               'Minutes:'
             ),
-            React__default.createElement(ReactSlider, { min: 0, max: 59, value: _moment.minute(), onChange: this.handleChange.bind(this, 'minutes'), withBars: true })
+            React__default.createElement(ReactSlider, { min: 0, max: 59, value: _moment.minute(), onChange: this.handleChange.bind(this, 'minute'), withBars: true })
           )
         )
       );
