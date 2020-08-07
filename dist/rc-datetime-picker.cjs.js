@@ -359,12 +359,12 @@ var Month = function (_Component) {
 
       var _moment = _this.state.moment.clone();
 
-      _moment.month(month);
+      var newMonth = _moment.month(month);
 
       _this.setState({
-        moment: _moment
+        moment: newMonth
       });
-      onSelect(_moment);
+      onSelect(newMonth);
     };
 
     _this._renderMonth = function (row, month, idx) {
@@ -527,13 +527,13 @@ var Year = function (_Component) {
       if (isDisabled) return;
       var _moment = _this.state.moment.clone();
 
-      _moment.year(year);
+      var newYear = _moment.year(year);
 
       _this.setState({
-        moment: _moment,
-        selected: _moment
+        moment: newYear,
+        selected: newYear
       });
-      _this.props.onSelect(_moment);
+      _this.props.onSelect(newYear);
     };
 
     _this._renderYear = function (year) {

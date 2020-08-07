@@ -31,13 +31,13 @@ class Year extends Component {
     if (isDisabled) return;
     const _moment = this.state.moment.clone();
 
-    _moment.year(year);
+    const newYear = _moment.year(year);
 
     this.setState({
-      moment: _moment,
-      selected: _moment
+      moment: newYear,
+      selected: newYear
     });
-    this.props.onSelect(_moment);
+    this.props.onSelect(newYear);
   }
 
   _renderYear = (year) => {

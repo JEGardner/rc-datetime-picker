@@ -33,12 +33,12 @@ class Month extends Component {
     const {onSelect} = this.props;
     const _moment = this.state.moment.clone();
 
-    _moment.month(month);
+    const newMonth = _moment.month(month);
 
     this.setState({
-      moment: _moment
+      moment: newMonth
     });
-    onSelect(_moment);
+    onSelect(newMonth);
   }
 
   _renderMonth = (row, month, idx) => {
