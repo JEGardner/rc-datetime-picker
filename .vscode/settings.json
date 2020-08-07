@@ -1,0 +1,9 @@
+{
+  "search.exclude": {
+    "**/dist": true,
+    "**/node_modules": true
+  },
+  "breadcrumbs.enabled": true,
+  "eslint.alwaysShowStatus": true,
+  "editor.formatOnSave": true
+}

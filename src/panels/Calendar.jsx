@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-// import moment from 'moment';
-const moment = require('moment');
+import dayjs from 'dayjs';
 
 import Day from './Day.jsx';
 import Month from './Month.jsx';
@@ -29,7 +28,7 @@ class Calendar extends Component {
 
   getCurrentMoment = (props) => {
     const {range, rangeAt} = props;
-    const now = this.state ? this.state.moment || moment() : moment();
+    const now = this.state ? this.state.moment || dayjs() : dayjs();
     let result = props.moment;
 
     if (result) {

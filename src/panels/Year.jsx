@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import classNames from 'classnames/bind';
 
 import {chunk, range} from '../utils';
@@ -41,7 +41,7 @@ class Year extends Component {
   }
 
   _renderYear = (year) => {
-    const now = moment();
+    const now = dayjs();
     const _moment = this.state.moment;
     const firstYear = Math.floor(_moment.year() / 10) * 10;
     const {maxDate, minDate, selected, range, rangeAt, dateLimit} = this.props;

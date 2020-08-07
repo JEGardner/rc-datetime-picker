@@ -1,6 +1,6 @@
 {
   "name": "rc-datetime-picker",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "React datetime picker by momentjs",
   "main": "dist/rc-datetime-picker.cjs.js",
   "keywords": [
@@ -32,7 +32,7 @@
     "blacklist": "^1.1.4",
     "classnames": "^2.2.5",
     "create-react-class": "^15.6.2",
-    "react-slider": "^0.9.0"
+    "react-slider": "0.9.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -45,6 +45,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "css-loader": "^0.28.9",
+    "dayjs": "1.8.32",
     "eslint": "^4.16.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-react": "^7.5.1",
@@ -52,7 +53,6 @@
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "less-plugin-clean-css": "^1.5.1",
-    "moment": "^2.20.1",
     "react": "^16.2.0",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.2.0",

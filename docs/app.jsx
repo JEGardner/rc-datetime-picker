@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import {DatetimePicker, DatetimePickerTrigger} from '../dist/rc-datetime-picker';
 import './app.less';
@@ -10,7 +10,7 @@ class InlinePicker extends Component {
   constructor() {
     super();
     this.state = {
-      moment: moment()
+      moment: dayjs()
     };
   }
 
@@ -39,7 +39,7 @@ class PopupPicker extends Component {
   constructor() {
     super();
     this.state = {
-      datetime: moment()
+      datetime: dayjs()
     };
   }
 
@@ -51,8 +51,8 @@ class PopupPicker extends Component {
 
   render() {
     const shortcuts = {
-      'Today': moment(),
-      'Yesterday': moment().subtract(1, 'days'),
+      'Today': dayjs(),
+      'Yesterday': dayjs().subtract(1, 'days'),
       'Clear': ''
     };
     const {datetime} = this.state;

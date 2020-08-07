@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import classNames from 'classnames/bind';
 import {CUSTOM_BUTTON_TEXT} from '../constants';
 
@@ -48,8 +48,8 @@ class Shortcuts extends Component {
       ? {
         ...shortcuts, 
         custom: customRange || {
-          start: moment().subtract(29, 'days'),
-          end: moment().endOf('day')
+          start: dayjs().subtract(29, 'days'),
+          end: dayjs().endOf('day')
         }
       } 
       : shortcuts;

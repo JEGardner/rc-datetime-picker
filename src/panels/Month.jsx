@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import classNames from 'classnames/bind';
 
 import {MONTHS} from '../constants';
@@ -42,7 +42,7 @@ class Month extends Component {
   }
 
   _renderMonth = (row, month, idx) => {
-    const now = moment();
+    const now = dayjs();
     const _moment = this.state.moment;
     const {maxDate, minDate, months, selected, range, rangeAt, dateLimit} = this.props;
     const currentMonth = _moment.clone().month(month);

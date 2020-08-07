@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactSlider from 'react-slider';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 
 class Time extends Component {
@@ -23,10 +23,10 @@ class Time extends Component {
 
     if (result) {
       if (range) {
-        result = result[rangeAt] || moment().hours(0).minutes(0);
+        result = result[rangeAt] || dayjs().hours(0).minutes(0);
       }
     } else {
-      result = moment().hours(0).minutes(0);
+      result = dayjs().hours(0).minutes(0);
     }
 
     return result;

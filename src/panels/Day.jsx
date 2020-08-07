@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import classNames from 'classnames/bind';
 
 import {WEEKS, DAY_FORMAT} from '../constants';
@@ -36,12 +36,12 @@ class Day extends Component {
     if (isPrevMonth) _moment.subtract(1, 'month');
     if (isNextMonth) _moment.add(1, 'month');
 
-    _moment.date(day);
+    const newDate = _moment.date(day);
     
     this.setState({
-      moment: range ? this.state.moment : _moment
+      moment: range ? this.state.moment : newDate
     });
-    onSelect(_moment);
+    onSelect(newDate);
   }
 
   _renderWeek = (week) => {
@@ -52,7 +52,7 @@ class Day extends Component {
 
   _renderDay = (week, day) => {
     const {maxDate, minDate, range, rangeAt, selected, dateLimit} = this.props;
-    const now = moment();
+    const now = dayjs();
     const _moment = this.state.moment;
     const isPrevMonth = week === 0 && day > 7;
     const isNextMonth = week >= 4 && day <= 14;

@@ -1,8 +1,8 @@
 /*
- * rc-datetime-picker v1.6.1
+ * rc-datetime-picker v1.6.2
  * https://github.com/AllenWooooo/rc-datetime-picker
  *
- * (c) 2018 Allen Wu
+ * (c) 2020 Allen Wu
  * License: MIT
  */
 'use strict';
@@ -15,7 +15,7 @@ var React = require('react');
 var React__default = _interopDefault(React);
 var classNames = _interopDefault(require('classnames/bind'));
 var blacklist = _interopDefault(require('blacklist'));
-var moment = _interopDefault(require('moment'));
+var dayjs = _interopDefault(require('dayjs'));
 var ReactSlider = _interopDefault(require('react-slider'));
 var ReactDOM = require('react-dom');
 var ReactDOM__default = _interopDefault(ReactDOM);
@@ -159,12 +159,12 @@ var Day = function (_Component) {
       if (isPrevMonth) _moment.subtract(1, 'month');
       if (isNextMonth) _moment.add(1, 'month');
 
-      _moment.date(day);
+      var newDate = _moment.date(day);
 
       _this.setState({
-        moment: range$$1 ? _this.state.moment : _moment
+        moment: range$$1 ? _this.state.moment : newDate
       });
-      onSelect(_moment);
+      onSelect(newDate);
     };
 
     _this._renderWeek = function (week) {
@@ -184,7 +184,7 @@ var Day = function (_Component) {
           selected = _this$props2.selected,
           dateLimit = _this$props2.dateLimit;
 
-      var now = moment();
+      var now = dayjs();
       var _moment = _this.state.moment;
       var isPrevMonth = week === 0 && day > 7;
       var isNextMonth = week >= 4 && day <= 14;
@@ -368,7 +368,7 @@ var Month = function (_Component) {
     };
 
     _this._renderMonth = function (row, month, idx) {
-      var now = moment();
+      var now = dayjs();
       var _moment = _this.state.moment;
       var _this$props = _this.props,
           maxDate = _this$props.maxDate,
@@ -537,7 +537,7 @@ var Year = function (_Component) {
     };
 
     _this._renderYear = function (year) {
-      var now = moment();
+      var now = dayjs();
       var _moment = _this.state.moment;
       var firstYear = Math.floor(_moment.year() / 10) * 10;
       var _this$props = _this.props,
@@ -676,9 +676,6 @@ var Year = function (_Component) {
   return Year;
 }(React.Component);
 
-// import moment from 'moment';
-var moment$1 = require('moment');
-
 var Calendar = function (_Component) {
   inherits(Calendar, _Component);
 
@@ -769,7 +766,7 @@ var _initialiseProps = function _initialiseProps() {
     var range = props.range,
         rangeAt = props.rangeAt;
 
-    var now = _this2.state ? _this2.state.moment || moment$1() : moment$1();
+    var now = _this2.state ? _this2.state.moment || dayjs() : dayjs();
     var result = props.moment;
 
     if (result) {
@@ -820,10 +817,10 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.changePanel = function (panel) {
-    var moment$$1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _this2.state.moment;
+    var moment = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _this2.state.moment;
 
     _this2.setState({
-      moment: moment$$1,
+      moment: moment,
       panel: panel
     });
   };
@@ -918,10 +915,10 @@ var _initialiseProps$1 = function _initialiseProps() {
 
     if (result) {
       if (range) {
-        result = result[rangeAt] || moment().hours(0).minutes(0);
+        result = result[rangeAt] || dayjs().hours(0).minutes(0);
       }
     } else {
-      result = moment().hours(0).minutes(0);
+      result = dayjs().hours(0).minutes(0);
     }
 
     return result;
@@ -1015,8 +1012,8 @@ var Shortcuts = function (_Component) {
 
       var renderShortcuts = showCustomButton ? _extends({}, shortcuts, {
         custom: customRange || {
-          start: moment().subtract(29, 'days'),
-          end: moment().endOf('day')
+          start: dayjs().subtract(29, 'days'),
+          end: dayjs().endOf('day')
         }
       }) : shortcuts;
 
@@ -1119,31 +1116,31 @@ var Range = function (_Component) {
 
     var _this = possibleConstructorReturn(this, (Range.__proto__ || Object.getPrototypeOf(Range)).call(this, props));
 
-    _this.handleChange = function (moment$$1) {
+    _this.handleChange = function (moment) {
       _this.setState({
-        moment: moment$$1
+        moment: moment
       });
     };
 
-    _this.handleShortcutChange = function (moment$$1, isCustom) {
+    _this.handleShortcutChange = function (moment, isCustom) {
       var onChange = _this.props.onChange;
 
 
       if (isCustom) {
         _this.setState({
-          moment: moment$$1
+          moment: moment
         });
       } else {
-        onChange && onChange(moment$$1);
+        onChange && onChange(moment);
       }
     };
 
     _this.onConfirm = function () {
-      var moment$$1 = _this.state.moment;
+      var moment = _this.state.moment;
       var onChange = _this.props.onChange;
 
 
-      onChange && onChange(moment$$1);
+      onChange && onChange(moment);
     };
 
     _this.state = {
@@ -1162,7 +1159,7 @@ var Range = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var moment$$1 = this.state.moment;
+      var moment = this.state.moment;
       var _props = this.props,
           format = _props.format,
           _props$showTimePicker = _props.showTimePicker,
@@ -1187,7 +1184,7 @@ var Range = function (_Component) {
         React__default.createElement(
           'div',
           { className: 'tools-bar' },
-          shortcuts ? React__default.createElement(Shortcuts, _extends({}, props, { moment: moment$$1 || {}, range: true, shortcuts: shortcuts, onChange: this.handleShortcutChange })) : undefined,
+          shortcuts ? React__default.createElement(Shortcuts, _extends({}, props, { moment: moment || {}, range: true, shortcuts: shortcuts, onChange: this.handleShortcutChange })) : undefined,
           React__default.createElement(
             'div',
             { className: 'buttons' },
@@ -1221,7 +1218,7 @@ var Range = function (_Component) {
                   React__default.createElement(
                     'span',
                     { className: 'text-value' },
-                    moment$$1 && moment$$1.start ? moment$$1.start.format(formatStyle) : undefined
+                    moment && moment.start ? moment.start.format(formatStyle) : undefined
                   )
                 ),
                 React__default.createElement(
@@ -1235,7 +1232,7 @@ var Range = function (_Component) {
                   React__default.createElement(
                     'span',
                     { className: 'text-value' },
-                    moment$$1 && moment$$1.end ? moment$$1.end.format(formatStyle) : undefined
+                    moment && moment.end ? moment.end.format(formatStyle) : undefined
                   )
                 )
               ),
@@ -1249,7 +1246,7 @@ var Range = function (_Component) {
                     isOpen: isOpen,
                     className: 'range-start-picker',
                     showTimePicker: showTimePicker,
-                    moment: moment$$1,
+                    moment: moment,
                     range: true,
                     rangeAt: 'start',
                     onChange: this.handleChange
@@ -1262,7 +1259,7 @@ var Range = function (_Component) {
                     isOpen: isOpen,
                     className: 'range-end-picker',
                     showTimePicker: showTimePicker,
-                    moment: moment$$1,
+                    moment: moment,
                     range: true,
                     rangeAt: 'end',
                     onChange: this.handleChange
@@ -1701,7 +1698,7 @@ var Trigger = function (_Component) {
       }
     };
 
-    _this.handleChange = function (moment$$1, currentPanel) {
+    _this.handleChange = function (moment, currentPanel) {
       var _this$props = _this.props,
           closeOnSelectDay = _this$props.closeOnSelectDay,
           onChange = _this$props.onChange;
@@ -1713,7 +1710,7 @@ var Trigger = function (_Component) {
         });
       }
 
-      onChange && onChange(moment$$1);
+      onChange && onChange(moment);
     };
 
     _this.togglePicker = function (isOpen) {
@@ -1840,14 +1837,14 @@ var RangeTrigger = function (_Component) {
       }
     };
 
-    _this.handleChange = function (moment$$1) {
+    _this.handleChange = function (moment) {
       var onChange = _this.props.onChange;
 
 
       _this.setState({
         isOpen: false
       });
-      onChange && onChange(moment$$1);
+      onChange && onChange(moment);
     };
 
     _this.togglePicker = function (isOpen) {
