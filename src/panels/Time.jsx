@@ -23,10 +23,10 @@ class Time extends Component {
 
     if (result) {
       if (range) {
-        result = result[rangeAt] || dayjs().hours(0).minutes(0);
+        result = result[rangeAt] || dayjs();
       }
     } else {
-      result = dayjs().hours(0).minutes(0);
+      result = dayjs();
     }
 
     return result;
